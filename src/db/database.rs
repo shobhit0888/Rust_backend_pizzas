@@ -25,21 +25,7 @@ impl Database {
             db_name: String::from("pizzas")
         })
     }
-    pub async fn get_all_pizzas(&self) -> Option<Vec<Pizza>> {
-        let result = self.client.select("pizza").await;
-        match result {
-            Ok(all_pizzas) =>
-                Some(all_pizzas),
-            
-            Err(_) => None
-            
-        }
-    }
-    pub async fn add_pizza(&self, new_pizza: Pizza) ->Option<Pizza> {
-       let created_pizza = self.client.create(("pizza", new_pizza.uuid.clone())).content(new_pizza).await;
-        match created_pizza {
-            Ok(created)=>created,
-            Err(_)=>None
-        }
-    }
+    
+    
+   
 }
